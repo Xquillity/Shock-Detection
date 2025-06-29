@@ -1,45 +1,34 @@
+#include "Wire.h"
+#include "I2Cdev.h"
+#include "MPU6050.h"
 
-#include "Wire.h"       // I2C communication library
-#include "I2Cdev.h"     
-#include "MPU6050.h"    
-MPU6050 mpu;           // Create an MPU6050 object
-
-
-
-float gForce;
+MPU6050 mpu;
 
 void setup() {
-  Serial.begin(9600);  // Start serial communication at 115200 baud
-  Wire.begin();          // Initialize I2C communication, tells A5, A4
+  Serial.begin(9600);     // Match this in Serial Plotter
+  Wire.begin();
+  mpu.initialize();
 
-  mpu.initialize();      // Initialize the MPU6050 sensor
-
-  // Check if MPU6050 is connected correctly
-  if (mpu.testConnection()) {
-    Serial.println("MPU6050 connected successfully!");
-  } else {
-    Serial.println("MPU6050 connection failed.");
-    while (1);           // Halt here if connection failed
+  // Stop the program silently if sensor isn't connected
+  if (!mpu.testConnection()) {
+    while (1);  // Halt if MPU6050 not found
   }
 }
 
 void loop() {
-  int16_t ax, ay, az;        // Variables to store raw accelerometer data
+  int16_t ax, ay, az;
+  mpu.getAcceleration(&ax, &ay, &az);
 
-  mpu.getAcceleration(&ax, &ay, &az);  // Read raw accelerometer values
-
-  // Convert raw accelerometer data to acceleration in g (gravity units)
-  // 16384 is the scale factor for ±2g range (default)
+  // Convert raw values to g-force
   float gX = ax / 16384.0;
   float gY = ay / 16384.0;
   float gZ = az / 16384.0;
 
-  // Calculate total g-force magnitude using Pythagorean theorem
-  gForce = sqrt(gX * gX + gY * gY + gZ * gZ);
+  // Calculate total g-force
+  float gForce = sqrt(gX * gX + gY * gY + gZ * gZ);
 
-  Serial.print("G-Force: ");    // Print label
-  Serial.print(gForce);        // Print total g-force value // println
+  // Output only the gForce number — perfect for Serial Plotter
+  Serial.println(gForce);
 
- // delay(200);                   // Small delay before next reading
+  delay(50);  // Smooth graph (20Hz)
 }
-
