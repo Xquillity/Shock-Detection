@@ -11,10 +11,15 @@ float threshold = 2.0;   // how much means a spike? (test to get good value)
 void setup() {
   Serial.begin(9600);
   Wire.begin();
-  mpu.initialize();
+  mpu.initialize();      // Initialize the MPU6050 sensor
 
-  if (!mpu.testConnection()) {
-    while (1);  
+  // Check if MPU6050 is connected correctly
+  if (mpu.testConnection()) {
+    Serial.println("MPU6050 connected successfully!");
+  } 
+  else {
+    Serial.println("MPU6050 connection failed.");
+    while (1);          
   }
 }
 
@@ -40,9 +45,9 @@ Serial.println(g);
 
 //TELL SPIKE HAPPEND
   if (g > avg + threshold) {
-    Serial.print(" CRASH DETECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+    Serial.print(" CRASH DETECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ARIV IS SO GOOD AT CODING!!!!!!! ");
 
 
-  delay(50);
+  delay(1000);
 }
 }
