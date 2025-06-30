@@ -4,14 +4,17 @@
 
 MPU6050 mpu;
 
+float totalG = 0;        // sum of all gs
+int numSample = 0;         // how many gs so far
+float threshold = 2.0;   // how much means a spike? (test to get good value)
+
 void setup() {
-  Serial.begin(9600);     // Match this in Serial Plotter
+  Serial.begin(9600);
   Wire.begin();
   mpu.initialize();
 
-  // Stop the program silently if sensor isn't connected
   if (!mpu.testConnection()) {
-    while (1);  // Halt if MPU6050 not found
+    while (1);  
   }
 }
 
@@ -19,16 +22,27 @@ void loop() {
   int16_t ax, ay, az;
   mpu.getAcceleration(&ax, &ay, &az);
 
-  // Convert raw values to g-force
+// CALCULATE THE G FORCE
+
   float gX = ax / 16384.0;
   float gY = ay / 16384.0;
   float gZ = az / 16384.0;
 
-  // Calculate total g-force
-  float gForce = sqrt(gX * gX + gY * gY + gZ * gZ);
+  float g = sqrt(gX * gX + gY * gY + gZ * gZ);  // Total g-force
+Serial.println(g);
+//SET UP FOR AVG CALUCATION
 
-  // Output only the gForce number — perfect for Serial Plotter
-  Serial.println(gForce);
+  totalG = totalG + g;      // add new g to total sum
+  numSample++;        // add 1 every time, for average calucation
 
-  delay(50);  // Smooth graph (20Hz)
+//CALCULATE AVG
+  float avg = totalG / numSample;  // calculate the average
+
+//TELL SPIKE HAPPEND
+  if (g > avg + threshold) {
+    Serial.print(" CRASH DETECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+
+
+  delay(50);
+}
 }
