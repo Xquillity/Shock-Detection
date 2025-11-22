@@ -1,3 +1,4 @@
+# Linear Interpolation beetween a single sample of 2 senors
 import pandas as pd
 import numpy as np
 from scipy.interpolate import interp1d
@@ -43,3 +44,4 @@ plt.xlabel("Position")
 plt.ylabel("Peak value")
 plt.legend()
 plt.show()
+
