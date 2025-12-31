@@ -10,7 +10,7 @@
   //float totalValue2 = 0;
   unsigned int numSample = 0;
   float threshold = 50.0;
-  const int recordsamples = 90;
+  const int recordsamples = 60;
   bool hit;
   float sensorData[numSensors][recordsamples];             
   
@@ -35,69 +35,23 @@
   void loop() {
    numSample++;
    hit = false;
-
-   
-
     
       for (int sIdx = 0; sIdx < numSensors; sIdx++) {
-      // Read piezo values into array ( piezo number = read from which pin ( piezoPins[sIdx] ) )
-
-/**/
-      //Serial.print("5");
-     // Serial.print(" | ");
-
-
+      // Read piezo values into array ( piezo number = read from which pin ( piezoPins[sIdx] ) 
       piezoValue[sIdx] = analogRead(piezoPins[sIdx]);
       
-      //Serial.print("Piezo Value: ");
-      //Serial.print(piezoValue[sIdx]);
-      //Serial.print(" | ");
-
-
-      // add up total values read from previous loop  
+     //total value = all the piez values ooverall
       totalValue[sIdx] += piezoValue[sIdx];
-      
-      //Serial.print("Total Value: ");
-      //Serial.print(totalValue[5]);
-      //Serial.print(" | ");
 
-
-      //Serial.print("Num Samples: ");
-      //Serial.print(numSample);
-      //Serial.print(" | ");
-
-       // calculate average values 
+       // calculate average values = total / number of samples yet
       avg[sIdx] = totalValue[sIdx] / numSample;
       
-      //Serial.print("Average: ");
-      //Serial.println(avg[sIdx]);
-      //delay(50);
+      
 
       
     }// end of for loop over sIdx
    
-      /*
-
-      Serial.print("Piezo Value: ");
-      Serial.print(piezoValue[5]);
-      Serial.print(" | ");
-
-      
-      Serial.print("Total Value: ");
-      Serial.print(totalValue[5]);
-      Serial.print(" | ");
-
-
-      Serial.print("Num Samples: ");
-      Serial.print(numSample);
-      Serial.print(" | ");
-
-   
-      
-      Serial.print("Average: ");
-      Serial.println(avg[5]);
-      //delay(50);
-      */
+     
 
 // --------------------- end of reading and averaging piezo values --------------------- //
 
@@ -120,16 +74,7 @@
      }
 
 
-
-
-
-
-
-
-
-
-
-      
+ 
      //----------------- record data if hit detected ----------------- //
      if (hit == true) {
       hit = false;
@@ -139,24 +84,24 @@
               
               delay(1000);          
               
-              //Serial.println(sensorData[1][i]);             
-              //Serial.print("|") ;
-              // Serial.print(sensorData[2][i]);             
-             // Serial.print("|") ;
-             //  Serial.print(sensorData[3][i]);             
-             // Serial.print("|") ;
-              // Serial.print(sensorData[4][i]);             
-              //Serial.print("|") ;
-              // Serial.print(sensorData[5][i]);             
-              //Serial.print("|") ;
-              //Serial.print(sensorData[6][i]);             
-             // Serial.println("|") ;
-             //Serial.print(hit);
-             //Serial.println(i);
-             //Serial.println(sIdx);
+             Serial.println(sensorData[1][i]);             
+             Serial.print("|") ;
+             Serial.print(sensorData[2][i]);             
+             Serial.print("|") ;
+             Serial.print(sensorData[3][i]);             
+             Serial.print("|") ;
+             Serial.print(sensorData[4][i]);             
+             Serial.print("|") ;
+             Serial.print(sensorData[5][i]);             
+             Serial.print("|") ;
+             Serial.print(sensorData[6][i]);             
+             Serial.println("|") ;
+             Serial.print(hit);
+             Serial.println(i);
+             Serial.println(sIdx);
 
 
-              //Serial.println();
+             Serial.println();
               
             } 
         }  
@@ -170,14 +115,7 @@
 
 
 
-
-    //if (piezoValue1 > avg1 + threshold || piezoValue2 > avg2 + threshold) {           
-
-      //for (int i = 0; i < recordsamples ; i++) {     
-
-        //sensor1Data[i] = analogRead(piezoPin1);  
-        //sensor2Data[i] = analogRead(piezoPin2); 
-      // delay(50);                                
+                            
       
       
       }// end of full coid loop
