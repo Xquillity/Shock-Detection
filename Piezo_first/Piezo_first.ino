@@ -78,31 +78,28 @@
      //----------------- record data if hit detected ----------------- //
      if (hit == true) {
       hit = false;
-        for (int sIdx = 0; sIdx < 1; sIdx++) {
+        for (int sIdx = 0; sIdx < 6; sIdx++) {
             for (int i = 0; i < recordsamples ; i++) {     
               sensorData[sIdx][i] = analogRead(piezoPins[sIdx]);  // save all data from each sensor into sensorData array
               
-              delay(1000);          
-              
-             Serial.println(sensorData[1][i]);             
-             Serial.print("|") ;
-             Serial.print(sensorData[2][i]);             
-             Serial.print("|") ;
-             Serial.print(sensorData[3][i]);             
-             Serial.print("|") ;
-             Serial.print(sensorData[4][i]);             
-             Serial.print("|") ;
-             Serial.print(sensorData[5][i]);             
-             Serial.print("|") ;
-             Serial.print(sensorData[6][i]);             
-             Serial.println("|") ;
-             Serial.print(hit);
-             Serial.println(i);
-             Serial.println(sIdx);
 
+             Serial.print("Sensor Number : "); 
+             Serial.print(sIdx);  
+             Serial.print("| ") ;
+             Serial.print("Sample Index:");
+             Serial.print(i);
+             Serial.print("| ") ;
+             Serial.print(sensorData[sIdx][i]);             
+             Serial.print(" |") ;
+
+            
+             
+            
 
              Serial.println();
               
+
+                delay(50); 
             } 
         }  
       } 
