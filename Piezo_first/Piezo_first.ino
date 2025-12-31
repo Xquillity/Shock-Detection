@@ -1,7 +1,7 @@
-  const int numSensors = 6;
-  const int piezoPins[numSensors] = {A0, A2, A3, A4, A5, A6};     // Piezo sensor pins as array
+  const int numSensors = 5;
+  const int piezoPins[numSensors] = {A0, A2, A3, A4, A5};     // Piezo sensor pins as array
   float piezoValue[numSensors];
-  float totalValue[numSensors] = {0, 0, 0, 0, 0, 0};
+  float totalValue[numSensors] = {0, 0, 0, 0, 0};
   float avg[numSensors];
   
 
