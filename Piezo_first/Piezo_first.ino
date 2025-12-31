@@ -61,12 +61,12 @@
     
           //hit = false;
         if (piezoValue[sIdx] > avg[sIdx] + threshold) { // checking if piezo value is a peak / hit
-        Serial.print("_______________________-------------------HIT DETECTED------------------------____________________");
-        Serial.print(sIdx);
-          Serial.print(" | ");
-          Serial.print(piezoValue[sIdx]);
-          Serial.print(" | ");
-          Serial.println(avg[sIdx]);
+        // Serial.print("_______________________-------------------HIT DETECTED------------------------____________________");
+        // Serial.print(sIdx);
+        //   Serial.print(" | ");
+        //   Serial.print(piezoValue[sIdx]);
+        //   Serial.print(" | ");
+        //   Serial.println(avg[sIdx]);
           
 
           hit =  true;    
@@ -78,31 +78,78 @@
      //----------------- record data if hit detected ----------------- //
      if (hit == true) {
       hit = false;
-        for (int sIdx = 0; sIdx < 6; sIdx++) {
+        for (int sIdx = 0; sIdx < numSensors; sIdx++) {
             for (int i = 0; i < recordsamples ; i++) {     
               sensorData[sIdx][i] = analogRead(piezoPins[sIdx]);  // save all data from each sensor into sensorData array
               
 
-             Serial.print("Sensor Number : "); 
-             Serial.print(sIdx);  
-             Serial.print("| ") ;
-             Serial.print("Sample Index:");
-             Serial.print(i);
-             Serial.print("| ") ;
-             Serial.print(sensorData[sIdx][i]);             
-             Serial.print(" |") ;
+            //  Serial.print("Sensor Number : "); 
+            //  Serial.print(sIdx);  
+            //  Serial.print("| ") ;
+            //  Serial.print("Sample Index:");
+            //  Serial.print(i);
+            //  Serial.print("| ") ;
+            //  Serial.print(sensorData[sIdx][i]);             
+            //  Serial.print(" |") ;
 
             
              
             
 
-             Serial.println();
+            //  Serial.println();
               
 
-                delay(50); 
+                //delay(50); 
             } 
+
         }  
+          
+        for (int i = 0; i < recordsamples ; i++){
+            
+            Serial.print(" Sample index : ");
+            Serial.print(i);
+            Serial.print("  |  ");
+            
+              for (int sIdx = 0; sIdx < numSensors; sIdx++) {
+              
+
+                Serial.print(sensorData[sIdx][i]);
+                Serial.print("  |  ");
+               
+
+
+
+
+
+
+
+            }
+            Serial.println(); // Add new line after each complete sample
+           
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       } 
+
       
       
 
