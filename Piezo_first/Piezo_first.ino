@@ -1,7 +1,7 @@
-  const int numSensors = 5;
-  const int piezoPins[numSensors] = {A0, A2, A3, A4, A5};     // Piezo sensor pins as array
+  const int numSensors = 6;
+  const int piezoPins[numSensors] = {A0, A1, A2, A3, A4, A5};     // Piezo sensor pins as array
   float piezoValue[numSensors];
-  float totalValue[numSensors] = {0, 0, 0, 0, 0};
+  float totalValue[numSensors] = {0, 0, 0, 0, 0, 0};
   float avg[numSensors];
   
 
@@ -78,20 +78,14 @@
      //----------------- record data if hit detected ----------------- //
      if (hit == true) {
       hit = false;
+      
+      Serial.println("Sample index : 0  | SEN.0  |  SEN.01  |  SEN.02  |  SEN.03  |  SEN.04  |  SEN.05 |");
         for (int sIdx = 0; sIdx < numSensors; sIdx++) {
             for (int i = 0; i < recordsamples ; i++) {     
               sensorData[sIdx][i] = analogRead(piezoPins[sIdx]);  // save all data from each sensor into sensorData array
               
 
-            //  Serial.print("Sensor Number : "); 
-            //  Serial.print(sIdx);  
-            //  Serial.print("| ") ;
-            //  Serial.print("Sample Index:");
-            //  Serial.print(i);
-            //  Serial.print("| ") ;
-            //  Serial.print(sensorData[sIdx][i]);             
-            //  Serial.print(" |") ;
-
+            
             
              
             

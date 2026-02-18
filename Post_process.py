@@ -18,8 +18,9 @@ for start in range(0, len(data_first_90), chunk_size):
     time = range(0, len(chunk))     # Time axis for this chunk
  
     # Sensor left = blue , Sensor right = orange 
-    plt.plot(time, chunk[1])
-    #plt.plot(time, chunk[1])
+    plt.plot(time, chunk[0], label='Sensor 1 (Left)')
+    plt.plot(time, chunk[1], label='Sensor 2 (Right)')
+    plt.legend()
     plt.title(f'Samples {start} to {end})')
     plt.xlabel('Time')
     plt.ylabel('Vibration')

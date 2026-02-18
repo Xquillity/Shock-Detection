@@ -5,7 +5,7 @@ from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 
 #Load CSV file
-data = pd.read_csv(r'D:\Github\Shock-Detection\Data\data_3.csv', header=None, names=["sensor1", "sensor2"])
+data = pd.read_csv(r'D:\Github\Shock-Detection\Data\data_1.csv', header=None, names=["sensor1", "sensor2"])
 
 # find peak values
 sensor1_peak_row = data["sensor1"].idxmax()

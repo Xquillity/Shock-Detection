@@ -1,4 +1,7 @@
-import numpy as np                      
+import numpy as np        
+
+
+#random data points
 import matplotlib.pyplot as plt          
 from scipy.interpolate import Rbf        
 from mpl_toolkits.mplot3d import Axes3D  
