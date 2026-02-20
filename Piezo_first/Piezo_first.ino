@@ -103,7 +103,7 @@
         for (int i = 0; i < recordsamples ; i++){
             
             
-              for (int sIdx = 0; sIdx < numSensors-1; sIdx++) {
+              for (int sIdx = 0; sIdx < numSensors; sIdx++) {
               
 
                 Serial.print(sensorData[sIdx][i]);
