@@ -80,7 +80,7 @@
       
 
       
-      Serial.println("Sample index : 0  | SEN.0  |  SEN.01  |  SEN.02  |  SEN.03  |  SEN.04  |  SEN.05 |");
+
         for (int sIdx = 0; sIdx < numSensors; sIdx++) {
             for (int i = 0; i < recordsamples ; i++) {     
               sensorData[sIdx][i] = analogRead(piezoPins[sIdx]);  // save all data from each sensor into sensorData array
@@ -102,11 +102,8 @@
           
         for (int i = 0; i < recordsamples ; i++){
             
-            Serial.print(" Sample index : ");
-            Serial.print(i);
-            Serial.print("  |  ");
             
-              for (int sIdx = 0; sIdx < numSensors; sIdx++) {
+              for (int sIdx = 0; sIdx < numSensors-1; sIdx++) {
               
 
                 Serial.print(sensorData[sIdx][i]);
