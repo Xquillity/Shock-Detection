@@ -9,7 +9,7 @@
   //float totalValue1 = 0;
   //float totalValue2 = 0;
   unsigned int numSample = 0;
-  float threshold = 50.0;
+  float threshold = 50.0;  // Increased threshold to reduce false positives from minor vibrations
   const int recordsamples = 60;
   bool hit;
   float sensorData[numSensors][recordsamples];             
@@ -77,12 +77,14 @@
  
      //----------------- record data if hit detected ----------------- //
      if (hit == true) {
-      hit = false;
+      
+
       
       Serial.println("Sample index : 0  | SEN.0  |  SEN.01  |  SEN.02  |  SEN.03  |  SEN.04  |  SEN.05 |");
         for (int sIdx = 0; sIdx < numSensors; sIdx++) {
             for (int i = 0; i < recordsamples ; i++) {     
               sensorData[sIdx][i] = analogRead(piezoPins[sIdx]);  // save all data from each sensor into sensorData array
+              
               
 
             
@@ -108,7 +110,7 @@
               
 
                 Serial.print(sensorData[sIdx][i]);
-                Serial.print("  |  ");
+                Serial.print("  ,  ");
                
 
 
@@ -122,25 +124,13 @@
            
           }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Reset variables after hit detection to prevent stacking
+        hit = false;
+        numSample = 0;
+        for (int sIdx = 0; sIdx < numSensors; sIdx++) {
+          avg[sIdx] = 0;
+          totalValue[sIdx] = 0;
+        }
 
       } 
 
