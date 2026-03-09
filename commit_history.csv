@@ -1,0 +1,21 @@
+4c0a9c83873c7c7264bd48acfd1ee38a1d0118d2,Ariv Pasad,ariv.pasad@gmail.com,2026-03-05,final algorithms, and interpolation
+b593ba8c7d6c67b5f89cad4ccace885bac57a446,Ariv Pasad,ariv.pasad@gmail.com,2026-02-20,working rdf save
+d589b14be72c3a8e1f1c3659baaae0cb977cadd8,Ariv Pasad,ariv.pasad@gmail.com,2026-02-20,5 kernels
+efa11613c4a9e6eba70fc0258dcdf6c3ed7b30ef,Ariv Pasad,ariv.pasad@gmail.com,2026-02-20,Working RBF, with 5 sensors
+870498138492e564011180ba1222522e62ad5a53,Ariv Pasad,ariv.pasad@gmail.com,2026-02-18,working
+24c950678377db3a53fec68454f7cb23ded1f420,Ariv Pasad,ariv.pasad@gmail.com,2025-12-31,FIxed the prints can now collect and print real data
+8a44774022fbc51af1c0a2649bfcaa9be8d45de0,Ariv Pasad,ariv.pasad@gmail.com,2025-12-31,Removed sensor 5
+9cade930c1df18307801fbb5b1ab9df163ce165e,Ariv Pasad,ariv.pasad@gmail.com,2025-12-31,Sensor 5 giving faulty readings
+eb20ed7987ca7241c71763c56bb2e94e03c56002,Ariv Pasad,ariv.pasad@gmail.com,2025-12-31,Data problem fixed
+4ff5f539cdff7a8707b4632b90828c533d5a1e36,Ariv Pasad,ariv.pasad@gmail.com,2025-12-07,test prints
+36cff6e3c1ac78bd96dbb554c4d66e9dcdb37b9a,Ariv Pasad,ariv.pasad@gmail.com,2025-12-06,Printing fixed
+153dd38b8353661a98498a73247ca9180cef1870,Ariv Pasad,ariv.pasad@gmail.com,2025-11-21,Added arrays for multiple sensors
+059d453c4222994dc43f04132bb0f76d7eaa1217,Ariv Pasad,ariv.pasad@gmail.com,2025-11-21,Added Comments
+bcda03fc748409ba08b04364016496f0e89a0aef,Ariv Pasad,ariv.pasad@gmail.com,2025-09-06,2d Interpolation
+16db6836648d60beab418f71e4e10063b97b88d7,Ariv Pasad,ariv.pasad@gmail.com,2025-09-06,Zero Issues Fixed
+0bd099c7a5bcbd19e6c11f218ca73ad102dc8da3,Ariv Pasad,ariv.pasad@gmail.com,2025-07-01,Detect_0-1
+cd777cbc86e94c330c2e1a745fd2626ebbf32442,Ariv Pasad,ariv.pasad@gmail.com,2025-06-29,peak_detection_v2 * Working*
+d21c7fdab9b033ba2103c22d82d95717222bada4,Ariv Pasad,ariv.pasad@gmail.com,2025-06-29,with peak detection v1
+358b5856702e7ed0f2b2206f48bc48bf1d3414d5,Ariv Pasad,ariv.pasad@gmail.com,2025-06-28,works with plotter
+3a0aa0bd48429a2b291845aecf9c06b1c8cc7a0a,Ariv Pasad,ariv.pasad@gmail.com,2025-06-28,Create firsttest_one.ino
+9e13f21f09cf958468d92cdad3f5a5b17927cad6,Ariv Pasad,ariv.pasad@gmail.com,2025-06-28,Initial commit

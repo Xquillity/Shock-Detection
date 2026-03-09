@@ -77,5 +77,29 @@ def animate(frame):
 print("Starting animation... Close the window to stop.")
 anim = FuncAnimation(fig, animate, frames=len(all_samples), interval=200, blit=False, repeat=True)
 
+# Save animation - uncomment the desired format
+print("Saving animation...")
+
+# Option 1: Save as GIF (requires pillow: pip install pillow)
+try:
+    anim.save('shock_detection_animation.gif', writer='pillow', fps=5)
+    print("Animation saved as 'shock_detection_animation.gif'")
+except Exception as e:
+    print(f"Failed to save GIF: {e}")
+
+# Option 2: Save as MP4 (requires ffmpeg)
+# try:
+#     anim.save('shock_detection_animation.mp4', writer='ffmpeg', fps=5, bitrate=1800)
+#     print("Animation saved as 'shock_detection_animation.mp4'")
+# except Exception as e:
+#     print(f"Failed to save MP4: {e}")
+
+# Option 3: Save as HTML with controls (always works)
+try:
+    anim.save('shock_detection_animation.html', writer='html')
+    print("Animation saved as 'shock_detection_animation.html'")
+except Exception as e:
+    print(f"Failed to save HTML: {e}")
+
 # Show the plot
 plt.show()
