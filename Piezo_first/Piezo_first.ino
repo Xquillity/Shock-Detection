@@ -1,15 +1,16 @@
   const int numSensors = 6;
-  const int piezoPins[numSensors] = {A0, A1, A2, A3, A4, A5};     // Piezo sensor pins as array
+  const int piezoPins[numSensors] = {A0,A1,A2, A3,A4,A5};     // Piezo sensor pins as array
   float piezoValue[numSensors];
-  float totalValue[numSensors] = {0, 0, 0, 0, 0, 0};
+  float totalValue[numSensors] = {0,0,0,0,0,0};
   float avg[numSensors];
   
-
+  // Scaling parameters for all sensors - adjust these values to scale down sensor readings
+  const float SCALING_FACTORS[numSensors] = {1.0,1.0,1,1,1,1};  // Divides each sensor reading by these values
 
   //float totalValue1 = 0;
   //float totalValue2 = 0;
   unsigned int numSample = 0;
-  float threshold = 50.0;  // Increased threshold to reduce false positives from minor vibrations
+  float threshold = 25.0;  // Increased threshold to reduce false positives from minor vibrations
   const int recordsamples = 60;
   bool hit;
   float sensorData[numSensors][recordsamples];             
@@ -21,16 +22,7 @@
   }
 
 
-
 // LOOP BEGINS HERE//
-
-
-
-
-
-
-
-
 
   void loop() {
    numSample++;
@@ -39,6 +31,9 @@
       for (int sIdx = 0; sIdx < numSensors; sIdx++) {
       // Read piezo values into array ( piezo number = read from which pin ( piezoPins[sIdx] ) 
       piezoValue[sIdx] = analogRead(piezoPins[sIdx]);
+      
+      // Apply scaling to all sensors to reduce high readings as needed
+      piezoValue[sIdx] = piezoValue[sIdx] / SCALING_FACTORS[sIdx];
       
      //total value = all the piez values ooverall
       totalValue[sIdx] += piezoValue[sIdx];
@@ -85,16 +80,9 @@
             for (int i = 0; i < recordsamples ; i++) {     
               sensorData[sIdx][i] = analogRead(piezoPins[sIdx]);  // save all data from each sensor into sensorData array
               
-              
-
-            
-            
-             
-            
-
-            //  Serial.println();
-              
-
+              // Apply scaling to all sensors to reduce high recordings as needed
+              sensorData[sIdx][i] = sensorData[sIdx][i] / SCALING_FACTORS[sIdx];            
+            //  Serial.println()
                 //delay(50); 
             } 
 
@@ -109,19 +97,13 @@
                 Serial.print(sensorData[sIdx][i]);
                 Serial.print("  ,  ");
                
-
-
-
-
-
-
-
             }
             Serial.println(); // Add new line after each complete sample
            
           }
 
         // Reset variables after hit detection to prevent stacking
+        Serial.println( " HIT COMPLETE");
         hit = false;
         numSample = 0;
         for (int sIdx = 0; sIdx < numSensors; sIdx++) {

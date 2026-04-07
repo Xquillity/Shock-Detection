@@ -11,10 +11,10 @@ sample_to_read = 0  # Which sample (line number) to read (0-based indexing)
 df = pd.read_csv(file_to_read, header=None)
 sensor_values = df.iloc[sample_to_read].values  # Get the sensor readings S0-S4
 
-# Convert to floats, handling empty values and taking only first 5 sensors
+# Convert to floats, handling empty values and taking first 6 sensors
 z_list = []
 for i, val in enumerate(sensor_values):
-    if i >= 5:  # Only take first 5 sensors (S0-S4)
+    if i >= 6:  # Only take first 6 sensors (S0-S5)
         break
     val_str = str(val).strip()
     if val_str and val_str != 'nan':  # Check if not empty and not NaN
@@ -26,13 +26,13 @@ z = np.array(z_list)  # Convert to numpy array
 
 # === GROUND TRUTH COORDINATES (USER INPUT) ==========================================================================================================
 # Enter your actual impact point coordinates here
-actual_x = 5.0  # Actual X coordinate (inches)
-actual_y = 10.0  # Actual Y coordinate (inches)
+actual_x = 0.0  # Actual X coordinate (inches)
+actual_y = 6  # Actual Y coordinate (inches)
 print(f"Ground Truth: ({actual_x}, {actual_y})")
 #====================sensor setup===========================================================================================================================
-# Define known data points (x, y) and their corresponding values (z)
-x = np.array([0, -6, -2.5, 2.5, 6])  # Chosen x-coordinates
-y = np.array([0, 5.5, 11.5, 11.5, 5.5])    # Chosen y-coordinates
+# Define known data points (x, y) and their corresponding values (z) - with additional 6th sensor at (0,6)
+x = np.array([0, -6, -2.5, 2.5, 6, 0])  # Chosen x-coordinates
+y = np.array([0, 5.5, 11.5, 11.5, 5.5, 6])    # Chosen y-coordinates
 
 # Create a meshgrid for interpolation
 grid_x, grid_y = np.mgrid[-10:10:100j, 0:15:100j]
@@ -42,8 +42,8 @@ fig, ax = plt.subplots(1, 1, figsize=(10, 8))
 
 # Linear kernel only
 
-# Set linear kernel
-rbf = RBFInterpolator(np.column_stack((x, y)), z, kernel='linear')
+# Set Gaussian kernel
+rbf = RBFInterpolator(np.column_stack((x, y)), z, kernel='gaussian',  epsilon=0.2)
 
 # Perform interpolation on the grid (stacking grid_x and grid_y)
 points = np.column_stack((grid_x.ravel(), grid_y.ravel()))  # Combine into (n_points, 2)
