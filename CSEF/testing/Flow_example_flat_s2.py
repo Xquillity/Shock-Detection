@@ -4,7 +4,7 @@ from matplotlib.animation import FuncAnimation
 from scipy.interpolate import RBFInterpolator
 
 # === SETUP ===
-file_to_read = "Data/4_2_26_data/hit_5.csv"  
+file_to_read = "Data/4_2_26_data/hit_3.csv"  
 num_samples = 60  
 ground_truth = (5, 10)  # SET THIS TO YOUR ACTUAL IMPACT LOCATION
 

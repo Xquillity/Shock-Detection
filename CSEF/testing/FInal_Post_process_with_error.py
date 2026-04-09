@@ -4,8 +4,8 @@ from scipy.interpolate import RBFInterpolator
 import pandas as pd
 
 # === FILE AND SAMPLE SELECTION ===-----------------------------------------------------------------------------------------------------------------
-file_to_read = "Data/Test_hit_5,4.5"  # Which file to read
-sample_to_read = 0  # Which sample (line number) to read (0-based indexing)
+file_to_read = "Data/4_2_26_data/hit_3.csv"  # Which file to read
+sample_to_read = 23  # Which sample (line number) to read (0-based indexing)
 
 # Read the selected sample from CSV
 df = pd.read_csv(file_to_read, header=None)
